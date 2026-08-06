@@ -5,10 +5,22 @@
 wp-content/*
 !wp-content/themes/
 !wp-content/plugins/
+
+# Ignore les thèmes par défaut fournis avec WordPress (nommage "twentyXXX")
+wp-content/themes/twenty*/
+
+# Contenu généré / uploadé
 wp-content/uploads/
 wp-content/cache/
 wp-content/upgrade/
 
+# Dépendances front
+node_modules/
+
 # OS / éditeur
 .DS_Store
 .vscode/
+
+# Fichiers de sécurité génériques du core (identiques sur toute install WP)
+wp-content/plugins/index.php
+wp-content/themes/index.php
