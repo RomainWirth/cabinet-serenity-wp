@@ -1,0 +1,20 @@
+# WordPress core (non versionné, le dépôt ne couvre que thème/plugin)
+/wp-admin/
+/wp-includes/
+/wp-*.php
+!wp-config-sample.php
+
+# Config sensible
+wp-config.php
+
+# Contenu généré / uploadé
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+
+# Dépendances front
+node_modules/
+
+# OS / éditeur
+.DS_Store
+.vscode/
