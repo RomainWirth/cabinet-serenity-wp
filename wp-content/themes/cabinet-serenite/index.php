@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<?php wp_head(); ?>
-</head>
-<body>
-<h1><?php bloginfo( 'name' ); ?></h1>
-<h2><?php bloginfo( 'description' ); ?></h2>
+<?php get_header(); ?>
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -31,9 +23,7 @@ previous_posts_link();
 
 <?php else: ?>
 
-<p>No posts found. :(</p>
+<p>No posts found.</p>
 
 <?php endif; ?>
-<?php wp_footer(); ?>
-</body>
-</html>
+<?php get_footer(); ?>
