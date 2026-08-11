@@ -23,7 +23,7 @@ previous_posts_link();
 
 <?php else: ?>
 
-<p>No posts found.</p>
+<p>Site en maintenance</p>
 
 <?php endif; ?>
 <?php get_footer(); ?>
