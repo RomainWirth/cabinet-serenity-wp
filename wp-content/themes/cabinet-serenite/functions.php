@@ -15,6 +15,19 @@ add_action( 'after_setup_theme', function () {
 
 add_action( 'init', function () {
     add_post_type_support( 'page', 'excerpt' );
+    register_post_type( 
+        'prestation', 
+        [
+            'labels' => [
+                'name' => __( 'Prestations', 'cabinet-serenite' ),
+                'singular_name' => __( 'Prestation', 'cabinet-serenite' ),
+            ],
+            'public' => true,
+            'has_archive' => 'prestations',
+            'rewrite' => [ 'slug' => 'prestations' ],
+            'supports' => [ 'title', 'editor', 'thumbnail' ],
+        ] 
+    );
 } );
 
 add_action( 'wp_enqueue_scripts', function () {

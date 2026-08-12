@@ -9,6 +9,9 @@ wp-content/*
 # Ignore les thèmes par défaut fournis avec WordPress (nommage "twentyXXX")
 wp-content/themes/twenty*/
 
+# Ferme les plugins par défaut, n'autorise que le futur plugin custom (IT.9)
+wp-content/plugins/*
+
 # Contenu généré / uploadé
 wp-content/uploads/
 wp-content/cache/
