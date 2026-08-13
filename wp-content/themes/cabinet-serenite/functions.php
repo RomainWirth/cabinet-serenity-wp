@@ -15,20 +15,9 @@ add_action( 'after_setup_theme', function () {
 
 add_action( 'init', function () {
     add_post_type_support( 'page', 'excerpt' );
-    register_post_type( 
-        'prestation', 
-        [
-            'labels' => [
-                'name' => __( 'Prestations', 'cabinet-serenite' ),
-                'singular_name' => __( 'Prestation', 'cabinet-serenite' ),
-            ],
-            'public' => true,
-            'has_archive' => 'prestations',
-            'rewrite' => [ 'slug' => 'prestations' ],
-            'supports' => [ 'title', 'editor', 'thumbnail' ],
-        ] 
-    );
 } );
+add_action( 'init', 'register_post_type_prestation' );
+add_action('init', 'register_type_taxonomy_prestation');
 
 add_action( 'wp_enqueue_scripts', function () {
     wp_enqueue_style(
@@ -38,3 +27,30 @@ add_action( 'wp_enqueue_scripts', function () {
         wp_get_theme()->get( 'Version' )
     );
 } );
+
+function register_post_type_prestation() {
+    $args = [
+        'labels' => [
+            'name' => __( 'Prestations', 'cabinet-serenite' ),
+            'singular_name' => __( 'Prestation', 'cabinet-serenite' ),
+        ],
+        'public' => true,
+        'has_archive' => "prestations",
+        'rewrite' => [ 'slug' => 'prestations' ],
+        'supports' => [ 'title', 'editor', 'thumbnail' ],
+    ];
+    register_post_type( 'prestation', $args );
+}
+
+function register_type_taxonomy_prestation() {
+    $args = [
+        'labels' => [
+            'name' => __( 'Types de prestations', 'cabinet-serenite' ),
+            'singular_name' => __( 'Type de prestation', 'cabinet-serenite' ),
+        ],
+        'public' => true,
+        'hierarchical' => true,
+        'rewrite' => [ 'slug' => 'type-prestations' ],
+    ];
+    register_taxonomy( 'type_prestation', [ 'prestation' ], $args );
+}
