@@ -54,3 +54,35 @@ function register_type_taxonomy_prestation() {
     ];
     register_taxonomy( 'type_prestation', [ 'prestation' ], $args );
 }
+
+add_action( 'admin_post_cabinet_contact_submit', 'handle_contact_form_submission' );
+add_action( 'admin_post_nopriv_cabinet_contact_submit', 'handle_contact_form_submission' );
+
+function handle_contact_form_submission() {
+    $contact_page_url = get_permalink( get_page_by_path( 'contact' ) );
+    if ( ! isset( $_POST['cabinet_contact_nonce'] ) || ! wp_verify_nonce( $_POST['cabinet_contact_nonce'], 'cabinet_contact_action' ) ) {
+        wp_safe_redirect( add_query_arg( 'contact', 'error', $contact_page_url ) );
+        exit;
+    }
+
+    $name = sanitize_text_field( $_POST['name'] );
+    $email = sanitize_email( $_POST['email'] );
+    if ( ! is_email( $email ) ) {
+        wp_safe_redirect( add_query_arg( 'contact', 'error', $contact_page_url ) );
+        exit;
+    }
+    $message = sanitize_textarea_field( $_POST['message'] );
+
+    // Here you can handle the form submission, e.g., send an email or save to the database.
+    // For example, sending an email:
+    $to = get_option( 'admin_email' );
+    $subject = 'New Contact Form Submission';
+    $body = "Name: $name\nEmail: $email\nMessage:\n$message";
+    $headers = [ 'Content-Type: text/plain; charset=UTF-8' ];
+
+    wp_mail( $to, $subject, $body, $headers );
+
+    // Redirect back to the contact page with a success message
+    wp_safe_redirect( add_query_arg( 'contact', 'success', $contact_page_url ) );
+    exit;
+}
