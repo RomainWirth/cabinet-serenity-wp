@@ -6,7 +6,7 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-    <header>
+    <header class="site-header">
         <?php if ( has_custom_logo() ) : ?>
             <?php the_custom_logo(); ?>
         <?php else : ?>
@@ -14,12 +14,12 @@
             <h2><?php bloginfo( 'description' ); ?></h2>
         <?php endif; ?>
         <?php
-        wp_nav_menu( [
-            'theme_location' => 'primary',
-            'menu_id'        => 'primary-menu',
-            'container'      => false,
-            'menu_class'     => 'primary-menu',
-            'fallback_cb'    => false,
-        ] );
+            wp_nav_menu( [
+                'theme_location' => 'primary',
+                'menu_id'        => 'primary-menu',
+                'container'      => false,
+                'menu_class'     => 'primary-menu',
+                'fallback_cb'    => false,
+            ] );
         ?>
     </header>

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main>
+<main class="container">
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
         <section class="hero">
             <h1><?php the_title(); ?></h1>
@@ -10,8 +10,8 @@
                 <a class="hero-button" href="<?php echo esc_url( get_permalink($contact_page->ID) ); ?>">En savoir plus</a>
             <?php endif; ?> 
         </section>
-        <div>
-            <div>
+        <div class="prestation-grid">
+            <div class="prestation-card">
                 <?php $prestations_individuel = new WP_Query( [ 
                     'post_type' => 'prestation',
                     'posts_per_page' => 3,
@@ -43,7 +43,7 @@
                     <p><?php esc_html_e( 'Aucune prestation trouvée.' ); ?></p>
                 <?php endif; ?> 
             </div>
-            <div>
+            <div class="prestation-card">
                 <?php $prestations_collectif = new WP_Query( [ 
                     'post_type' => 'prestation',
                     'posts_per_page' => 3,
