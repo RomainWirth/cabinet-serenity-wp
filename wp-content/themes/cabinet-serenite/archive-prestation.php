@@ -10,9 +10,9 @@
         <div><?php echo esc_html( get_field('prix') ); ?> €</div>
         <div><?php echo esc_html( get_field('duree') ); ?></div>
     </div>
-    <?php endwhile; else: ?>
+    <?php endwhile; ?> 
+    <?php else: ?>
         <p>Pas de prestations</p>
     <?php endif; ?>
 </div>
-
 <?php get_footer(); ?>

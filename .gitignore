@@ -11,6 +11,7 @@ wp-content/themes/twenty*/
 
 # Ferme les plugins par défaut, n'autorise que le futur plugin custom (IT.9)
 wp-content/plugins/*
+!wp-content/plugins/cabinet-serenite-utils/
 
 # Contenu généré / uploadé
 wp-content/uploads/
