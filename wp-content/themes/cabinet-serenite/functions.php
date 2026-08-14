@@ -20,11 +20,23 @@ add_action( 'init', 'register_post_type_prestation' );
 add_action('init', 'register_type_taxonomy_prestation');
 
 add_action( 'wp_enqueue_scripts', function () {
+    // Bundle SCSS/JS compilé
+    $asset_file = get_theme_file_path( 'build/main.asset.php' );
+    $asset      = file_exists( $asset_file ) ? include $asset_file : [ 'dependencies' => [], 'version' => '1.0' ];
+
     wp_enqueue_style(
-        'cabinet-serenite-style',
-        get_stylesheet_uri(),
+        'cabinet-serenite-main',
+        get_theme_file_uri( 'build/style-main.css' ),
         [],
-        wp_get_theme()->get( 'Version' )
+        $asset['version']
+    );
+
+    wp_enqueue_script(
+        'cabinet-serenite-main',
+        get_theme_file_uri( 'build/main.js' ),
+        $asset['dependencies'],
+        $asset['version'],
+        true
     );
 } );
 

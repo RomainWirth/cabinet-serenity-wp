@@ -1,0 +1,10 @@
+@use 'variables';
+
+body {
+  background: variables.$color-background;
+}
+
+.site-header {
+  background: variables.$color-primary;
+  padding: 1rem;
+}

@@ -2,7 +2,7 @@
 
 <main>
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <section class="hero" style="width: 100%; background-color: #f2f2f2;">
+        <section class="hero">
             <h1><?php the_title(); ?></h1>
             <?php the_excerpt(); ?>
             <?php $contact_page = get_page_by_path('contact'); ?>
